@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HostileNetworkServer", "HostileNetworkServer\HostileNetworkServer.vcxproj", "{7E5B9AE1-5B5B-4F71-81F1-EE58881DEFF2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HostileNetworkClient", "HostileNetworkClient\HostileNetworkClient.vcxproj", "{2C2F439A-D84D-4270-9C47-75A549C11BE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E5B9AE1-5B5B-4F71-81F1-EE58881DEFF2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7E5B9AE1-5B5B-4F71-81F1-EE58881DEFF2}.Debug|Win32.Build.0 = Debug|Win32
+		{7E5B9AE1-5B5B-4F71-81F1-EE58881DEFF2}.Release|Win32.ActiveCfg = Release|Win32
+		{7E5B9AE1-5B5B-4F71-81F1-EE58881DEFF2}.Release|Win32.Build.0 = Release|Win32
+		{2C2F439A-D84D-4270-9C47-75A549C11BE3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2C2F439A-D84D-4270-9C47-75A549C11BE3}.Debug|Win32.Build.0 = Debug|Win32
+		{2C2F439A-D84D-4270-9C47-75A549C11BE3}.Release|Win32.ActiveCfg = Release|Win32
+		{2C2F439A-D84D-4270-9C47-75A549C11BE3}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
