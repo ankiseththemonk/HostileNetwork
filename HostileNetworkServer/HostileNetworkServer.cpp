@@ -1,11 +1,14 @@
 #include "stdafx.h"
 #include "HostileNetworkServer.h"
+#include "SharedUtils.h"
 
 using namespace std;
 
 #pragma comment(lib, "Ws2_32.lib")
 
 int main() {
+
+	SharedUtils::Utils::SharedTest();
 	
 	if (LaunchServer() == NULL)
 		cout << "Server accepted connection from client successfully." << endl;
@@ -58,7 +61,7 @@ SOCKET LaunchServer() {
 		return NULL;
 	}
 
-	// Setup the TCP listening socket
+	// Setup the UDP listening socket
     iResult = ::bind( ListenSocket, result->ai_addr, (int)result->ai_addrlen);
     if (iResult == SOCKET_ERROR) {
         printf("bind failed with error: %d\n", WSAGetLastError());
@@ -82,13 +85,15 @@ SOCKET LaunchServer() {
 
 	ClientSocket = INVALID_SOCKET;
 
-	// Accept a client socket
-	ClientSocket = accept(ListenSocket, NULL, NULL);
-	if (ClientSocket == INVALID_SOCKET) {
-		printf("accept failed: %d\n", WSAGetLastError());
-		closesocket(ListenSocket);
-		WSACleanup();
-		return NULL;
+	while (ClientSocket == INVALID_SOCKET) {
+		//Accept a client socket
+		ClientSocket = accept(ListenSocket, NULL, NULL);
+		if (ClientSocket == INVALID_SOCKET) {
+			printf("accept failed: %d\n", WSAGetLastError());
+			closesocket(ListenSocket);
+			WSACleanup();
+			return NULL;
+		}
 	}
 
 	return ClientSocket;

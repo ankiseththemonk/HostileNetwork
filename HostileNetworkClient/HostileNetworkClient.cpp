@@ -1,38 +1,41 @@
 #include "stdafx.h"
 #include "HostileNetworkClient.h"
+#include "SharedUtils.h"
 
 using namespace std;
 
 #pragma comment(lib, "Ws2_32.lib") //links to WinSock library
 
-int main(int argc, char* argv[]) {
+int main() {
 
-	string command = argv[1];
-	string fileName = argv[2];
+	SharedUtils::Utils::SharedTest();
 
-	//check for any command besides "get", "send", and "dir"
-	if (!(command == "send" || command == "get" || command == "dir")) {
-		cout << "Invalid parameters. Usage: program.exe <get|send> filename.txt" << endl;
-		exit(-1);
+	string command, fileName;
+
+	cout << "Usage: <get|send|dir>" << endl;
+	cout << "Please enter a command: ";
+	cin >> command;
+
+	while (!(command == "dir" || command == "send" || command == "get")) {
+		cout << "Invalid command. Usage: <get|send|dir>\n" << endl;
+		cout << "Please enter a command: ";
+		cin >> command;
 	}
 
-	//if user is trying to send a file, make sure file is specified && file exists
-	if (command == "send") {
-		if (fileName.empty()) {
-			cout << "Invalid parameters. Usage: program.exe <get|send> filepath\filename.txt" << endl;
-			exit(-1);
-		} else if (!FileExists(fileName)) {
-			cout << "File does not exist." << endl;
-			exit(-1);
+	if (command == "dir") {
+		cout << "Requested directory listing, please wait..." << endl;
+	} else if (command == "send") {
+		cout << "\nPlease enter a filepath\\filename: ";
+		
+		cin >> fileName;
+		while (fileName.empty() || !FileExists(fileName)) {
+			cout << "Invalid file name or file does not exist.\n" << endl;
+			cout << "Please enter a filepath\\filename: ";
+			cin >> fileName;
 		}
+	} else if (command == "get") {
+		//check if file exists on server side
 	}
-
-	//create connection to server
-	if(ConnectToServer() != NULL)
-		cout << "Connected to server successfully." << endl;
-	else
-		cout << "Failed to connect to server." << endl;
-
 
 	int a;
 	cin >> a;
